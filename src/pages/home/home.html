@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list [virtualScroll]="movies ">
+
+        <ion-item *virtualItem='let movie' text-wrap>
+
+            <ion-avatar item-start>
+
+                <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+
+            </ion-avatar>
+
+            <!--Adds a click event to trigger the launchMovieDetailsPage function to launch the movies modal and pass the movie object chosen by the user-->
+            <button (click)="launchMovieDetailsPage(movie)" ion-button clear color="dark">
+
+                <h2 style="font-weight:bold;">{{movie.original_title}}</h2>
+
+            </button>
+            <br>
+            <p style="padding-left:15px;">Release Date: {{movie.release_date}}</p>
+            <p style="padding-left:15px;">Rating: {{movie.vote_average}}</p>
+
+            <!--TBD: Use Card Instead of Button-->
+
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>
